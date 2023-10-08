@@ -371,8 +371,23 @@
 /* .game_content img {
   display: none;
 } */
-.text-area {
+.form-value {
+  position: absolute;
+  bottom: 20px;
+  width: 300px;
+  overflow-y: scroll;
+  height: 79px;
+  z-index: 999;
+  color: #fff;
+}
+.value-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 15px;
+}
+.add-button {
   position: absolute;
   bottom: 20px;
   z-index: 999;
+  color: #fff;
 }

@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import bgImage from "../assets/image/bg.png";
+import { DeleteOutlined } from "@ant-design/icons";
 // import WheelComponent from "react-wheel-of-prizes";
 
 // import "react-wheel-of-prizes/dist/index.css";
@@ -12,6 +13,7 @@ import audioxoso from "../assets/audio/xoso.mp3";
 import audiocainit from "../assets/audio/cainit.mp3";
 import audiocartoon from "../assets/audio/cartoon.mp3";
 import audiovit from "../assets/audio/vit.mp3";
+import { Button } from "antd/lib/radio";
 // import Modal from "./Modal";
 // import "../hooks/script";
 
@@ -79,7 +81,7 @@ export default function Game() {
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
   const [audio, setAudio] = useState();
-  const [dataArea, setDataArea] = useState([]);
+  // const [dataArea, setDataArea] = useState([]);
   const [goblet, setGoblet] = useState();
 
   // const [showPrize, setShowPrize] = useState();
@@ -123,7 +125,7 @@ export default function Game() {
     setMustSpin(false);
     // ref.current.pause();
     alert(
-      ` ${data[prizeNumber].option} + không làm uống  ${
+      ` ${data[prizeNumber].option} nếu không làm uống  ${
         goblet == 0 ? 1 : goblet
       } ly`
     );
@@ -139,7 +141,14 @@ export default function Game() {
   };
 
   // func back when modal prize show
-
+  const handleDelete = (event) => {
+    if (event) {
+      var dataDelete = data.filter((item) => {
+        return item?.option !== event;
+      });
+      setData(dataDelete);
+    }
+  };
   return (
     // container game page
     <>
@@ -181,14 +190,21 @@ export default function Game() {
         </div>
 
         {/* when spin stop => show prize component */}
-        <textarea
-          className="text-area"
-          value={data[0].option}
-          id="text-area"
-          name="text-area"
-          rows="4"
-          cols="50"
-        ></textarea>
+        <div className="form-value">
+          {data &&
+            data.map((item, index) => (
+              <div key={index} className="value-content">
+                {item?.option}{" "}
+                <span
+                  onClick={() => handleDelete(item?.option)}
+                  className="icon-delete"
+                >
+                  <DeleteOutlined />
+                </span>
+              </div>
+            ))}
+          <button className="add-button">ADD</button>
+        </div>
       </div>
     </>
   );
