@@ -376,18 +376,54 @@
   bottom: 20px;
   width: 300px;
   overflow-y: scroll;
-  height: 79px;
+  height: 150px;
   z-index: 999;
   color: #fff;
+}
+.form-value-add {
+  width: 300px;
+  overflow-y: scroll;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .value-content {
   display: flex;
   justify-content: space-between;
   padding: 0px 15px;
+  font-size: 18px;
+}
+.add-button-form {
+  position: absolute;
+  top: 16%;
+  z-index: 999;
+  display: flex;
+  gap: 20px;
 }
 .add-button {
-  position: absolute;
-  bottom: 20px;
-  z-index: 999;
-  color: #fff;
+  display: flex;
+  cursor: pointer;
+  gap: 10px;
+}
+.add-input {
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+.form-add {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.err_img {
+  width: 100%;
+  object-fit: contain;
+  max-height: 300px;
+}
+.title_err {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
 }
