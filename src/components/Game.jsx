@@ -294,11 +294,7 @@ export default function Game() {
   const handleSpinStop = () => {
     setMustSpin(false);
     // ref.current.pause();
-    alert(
-      ` ${data[prizeNumber].option} nếu không trả lời hoặc thực hiện uống  ${
-        goblet == 0 ? 1 : goblet
-      } ly`
-    );
+    alert(` ${data[prizeNumber].option} (${goblet == 0 ? 1 : goblet}) ly`);
     if (data[prizeNumber].option) {
       var fakeData = data.filter((item) => {
         return item.option !== data[prizeNumber].option;
@@ -366,9 +362,19 @@ export default function Game() {
     // container game page
     <>
       <div className="game">
-        <img src={bgImage} className="game_img" />
+        {/* <img src={bgImage} className="game_img" /> */}
         {/* game audio */}
-
+        <div className="add-button-form">
+          <Button onClick={() => setOnModalAdd(true)} className="add-button">
+            <PlusCircleOutlined /> Add
+          </Button>
+          <Button
+            onClick={() => setOnModalAddFast(true)}
+            className="add-button"
+          >
+            <PlusCircleOutlined /> Add List Demo
+          </Button>
+        </div>
         <audio className="game_audio" ref={ref}>
           <source src={audio} type="audio/mp3" />
         </audio>
@@ -418,17 +424,7 @@ export default function Game() {
               </div>
             ))}
         </div>
-        <div className="add-button-form">
-          <Button onClick={() => setOnModalAdd(true)} className="add-button">
-            <PlusCircleOutlined /> Add
-          </Button>
-          <Button
-            onClick={() => setOnModalAddFast(true)}
-            className="add-button"
-          >
-            <PlusCircleOutlined /> Add List Demo
-          </Button>
-        </div>
+
         <Modal
           title="Thêm yêu cầu"
           open={onModalAdd}
